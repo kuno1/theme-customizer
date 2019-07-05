@@ -1,0 +1,25 @@
+{
+    "name": "kunoichi/theme-customizer",
+    "description": "A handy class for WordPress customizer settings.",
+    "type": "library",
+    "scripts": {
+        "test": "phpunit"
+    },
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "fumikito",
+            "email": "guy@hametuha.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "Kunoichi\\ThemeCustomizer": "src"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    }
+}
