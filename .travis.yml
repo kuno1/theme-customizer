@@ -24,7 +24,8 @@ before_script:
 script:
 - composer test
 before_deploy:
-  - rm -rf {.git, bin, tests, .gitignore, .travis.yml, vendor, composer.lock, phpunit.xml.dist }
+  - "echo 'Making deploy packages...'"
+  - "rm -rfv {.git, bin, tests, .gitignore, .travis.yml, vendor, composer.lock, phpunit.xml.dist }"
   - zip -r theme-customizer.zip ./
 deploy:
   provider: releases
