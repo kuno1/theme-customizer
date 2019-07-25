@@ -25,7 +25,14 @@ script:
 - composer test
 before_deploy:
   - "echo 'Making deploy packages...'"
-  - "rm -rfv {.git, bin, tests, .gitignore, .travis.yml, vendor, composer.lock, phpunit.xml.dist }"
+  - rm -rfv .git
+  - rm -rfv bin
+  - rm -rfv tests
+  - rm -rfv .gitignore
+  - rm -rfv .travis.yml
+  - rm -rfv vendor
+  - rm -rfv composer.lock
+  - rm -rfv phpunit.xml.dist
   - zip -r theme-customizer.zip ./
 deploy:
   provider: releases
@@ -36,3 +43,4 @@ deploy:
   on:
     tags: true
     repo: kuno1/theme-customizer
+    php: 5.6
