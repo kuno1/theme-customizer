@@ -2,6 +2,8 @@
 
 namespace Kunoichi\ThemeCustomizer;
 
+use Hametuha\SingletonPattern\Singleton;
+
 /**
  * Class CustomizerSetting
  */
@@ -12,9 +14,19 @@ abstract class CustomizerSetting extends Singleton {
 	protected $section_id = '';
 	
 	/**
+	 * If this setting is deprecated, set this true and this class will be obsoleted.
+	 *
+	 * @var bool
+	 */
+	protected $duplicated = false;
+	
+	/**
 	 * Do something inside constructor.
 	 */
 	protected function init() {
+		if ( $this->duplicated ) {
+			return;
+		}
 		add_action( 'customize_register', [ $this, 'customize_register' ] );
 	}
 	
@@ -45,7 +57,7 @@ abstract class CustomizerSetting extends Singleton {
 	protected function register_field( &$wp_customizer, $id, $args ) {
 		// Add settings.
 		$wp_customizer->add_setting( $id, array_merge( $args, [
-			'type' => $args[ 'stored' ] ?? 'theme_mod',
+			'type' => isset( $args[ 'stored' ] ) ? $args['stored'] : 'theme_mod',
 		] ) );
 		// Add Control.
 		$control_class = 'WP_Customize_Control';
@@ -73,7 +85,7 @@ abstract class CustomizerSetting extends Singleton {
 	 * @see \WP_Customize_Manager::add_control()
 	 * @return array A conjunction of add_setting() and add_control()
 	 */
-	abstract protected function get_fields():array;
+	abstract protected function get_fields();
 	
 	/**
 	 * Get section id
