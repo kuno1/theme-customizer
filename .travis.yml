@@ -1,0 +1,37 @@
+sudo: false
+language: php
+notifications:
+  email:
+    on_success: never
+    on_failure: change
+branches:
+  only:
+  - master
+  - "/^v?[0-9\\.]+/"
+cache:
+- composer
+- "$HOME/.composer/cache"
+php:
+- 5.6
+- 7.0
+env:
+- WP_VERSION=latest WP_MULTISITE=0
+- WP_VERSION=nightly WP_MULTISITE=0
+before_script:
+- export PATH="$HOME/.composer/vendor/bin:$PATH"
+- bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+- composer install
+script:
+- composer test
+before_deploy:
+  - rm -rf {.git, bin, tests, .gitignore, .travis.yml, vendor, composer.lock, phpunit.xml.dist }
+  - zip -r theme-customizer.zip ./
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: gFwHs5mhnDBejw9rke7vBXqSESc3xOuz6BVpCAJ2QhIS8/Xz0cAu2tLYdT5dz3XqWwfRFzJ3O8m5fHQcreTs3+3at9urYGfnrv0TV7430uqflGCjikJ5RulCUnq2LVnRZAl6KUc0SFSzauPDllUylPppjk1BLy/00X2/Nkw3BQ7jHmGjBSSRq0ovIre36+p6zWpRbXTtXMHtK/CwFhEIzkhm4ugE2iLdshFQHQgN/5GdhC9Q5Am6+x3yUHxM7WS5l+cfVh4KOzZqUSWknYplc2DPBWeETeXVGGT4uFzhU9fVhkE3bFNjwXF/RLrEpgihctQ1yulg0Rk0pbwOC5XwGRE7AtH5Aq6A/xfM8FsZEt5KjA3IbX42DxLXBr9zNfqb/EJA4HOnozjVyuXpLJ7nPzqvm7zkUETI+Bzyshfa4XcTLz9WzEGDlTfbcgKpUc4av1qtspoOfngRFMgFxuRCmuiPcFVSQx7i4dPywjy6j6msrpuZ5RYWiMEMx7/iLW/0jf6wWF/Q4SwSOyS6IzAGcNiHTwKkSwkgxJcglraguZ2iG1x7Erhfs79sfIGOlL3J9zSdruEkWSMfvxxxU3dXQgsgUShb4LOoK2b8TrEB8S3WTJFsJuNlNpiTCdnszr9o3kDikqA9lFDeEMSVBFUG6vW/lLslp7+da61fOKCiGWU=
+  file: theme-customizer.zip
+  on:
+    tags: true
+    repo: kuno1/theme-customizer

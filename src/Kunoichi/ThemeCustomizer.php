@@ -44,12 +44,16 @@ class ThemeCustomizer {
 			if ( ! class_exists( $class_name ) ) {
 				continue;
 			}
-			$reflection = new \ReflectionClass( $class_name );
-			if ( ! $reflection->isSubclassOf( $base_class_name ) ) {
-				continue;
+			try {
+				$reflection = new \ReflectionClass( $class_name );
+				if ( ! $reflection->isSubclassOf( $base_class_name ) ) {
+					continue;
+				}
+				$class_name::get_instance();
+				$found ++;
+			} catch ( \Exception $e ) {
+				// Do nothing.
 			}
-			$class_name::get_instance();
-			$found++;
 		}
 		return $found ? true : new \WP_Error( 'no_class_found', __( 'No items found.' ) );
 	}
