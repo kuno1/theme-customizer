@@ -2,6 +2,8 @@
 
 A handy PHP class to integrate WordPress Theme Customizer.
 
+[![Travis CI Master](https://travis-ci.org/kuno1/theme-customizer.svg?branch=master)](https://travis-ci.org/kuno1/theme-customizer)
+
 ## Installation
 
 ```
@@ -18,7 +20,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 This library is an abstract class, so you have to implement it.
 
-```
+```php
 <?php
 
 namespace YourNameSpace\Customizer;
@@ -59,24 +61,37 @@ class YourClass extends CustomizerSetting {
 
 And you can call them in your theme's `functions.php`.
 
-```
-YourNameSpace\Customizer\YourClass::register();
+```php
+YourNameSpace\Customizer\YourClass::get_instance();
 ```
 
-Or, simply scan directory for convenience.
+Or, simply scan directory for convenience. Let's suppose that your theme is `my-theme` and directory is PSR-0 ready like below:
 
 ```
-foreach ( scandir( get_template_directory() . '/includes/customizer' ) as $file ) {
-	// Get file name to create class.
-	if ( ! preg_match( '/^(.*)\.php$/u', $file, $matches ) ) {
-		continue;
-	}
-	$class_name = "YourNameSpace\\Customizer\\{$matches[1]}";
-	if ( class_exists( $class_name ) ) {
-		$class_name::register();
-	}
-}
+my-theme
+└src
+  └ MyBrand
+     └ MyTheme
+        └ Customizers
+          ├ ColorSetting
+          └ AdSetting
 ```
+
+You should call like this:
+
+```php
+Kunoichi\ThemeCustomizer::register( 'YourBrand\YourTheme\Customizers' );
+```
+
+### Arguments
+
+`$namespace`
+
+Your PSR-0 name space. Directory will be scan recursively.
+
+`$direcotry`
+
+If not set, default is `get_template_directory() . '/src`, which seem to be a common location in theme development.
 
 ## License
 
