@@ -28,6 +28,14 @@ abstract class CustomizerSetting extends Singleton {
 			return;
 		}
 		add_action( 'customize_register', [ $this, 'customize_register' ] );
+		$this->after_init();
+	}
+	
+	/**
+	 * Executed just after initialized.
+	 */
+	protected function after_init() {
+		// Do something here.
 	}
 	
 	/**
