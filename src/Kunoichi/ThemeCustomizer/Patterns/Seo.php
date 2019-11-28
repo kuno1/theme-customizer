@@ -180,7 +180,7 @@ class Seo extends CustomizerSetting {
 		$metas['og']['title'] = $title;
 		$metas['og']['site_name'] = get_bloginfo( 'name' );
 		// Type
-		$metas['og']['type'] = is_front_page() ? 'website' : apply_filters( 'tsmed_meta_type', 'article' );
+		$metas['og']['type'] = is_front_page() ? 'website' : apply_filters( 'kunoichi_meta_type', 'article' );
 		// Description and URL.
 		$desc = '';
 		$url = '';
@@ -191,7 +191,7 @@ class Seo extends CustomizerSetting {
 			}
 			$url  = home_url();
 		} elseif ( is_singular() ) {
-			$desc = apply_filters( 'tsmed_meta_description', get_the_excerpt( get_queried_object() ) );
+			$desc = apply_filters( 'kunoichi_meta_description', get_the_excerpt( get_queried_object() ) );
 			$url  = get_permalink( get_queried_object() );
 		} elseif ( is_category() || is_tag() || is_tax() ) {
 			$desc = get_queried_object()->description;
@@ -245,7 +245,7 @@ class Seo extends CustomizerSetting {
 			$metas['twitter']['site'] = '@' . ltrim( $twitter, '@' );
 		}
 		if ( is_singular() ) {
-			$author_twitter = apply_filters( 'tsmed_meta_author_twitter', get_the_author_meta( 'twitter', get_queried_object()->post_author ) );
+			$author_twitter = apply_filters( 'kunoichi_meta_author_twitter', get_the_author_meta( 'twitter', get_queried_object()->post_author ) );
 			if ( $author_twitter ) {
 				$metas['twitter']['creator'] = '@' . ltrim( $author_twitter, '@' );
 			}
@@ -258,12 +258,12 @@ class Seo extends CustomizerSetting {
 		$author = get_bloginfo( 'name' );
 		if ( is_singular() && ! is_front_page() ) {
 			$author = get_the_author_meta( 'display_name', get_queried_object()->post_author );
-			$author = apply_filters( 'tsmed_meta_author_name', $author );
+			$author = apply_filters( 'kunoichi_meta_author_name', $author );
 		}
 		$metas['']['author'] = $author;
-		$metas['']['copyright'] = tsmed_copyright( false );
+		$metas['']['copyright'] = apply_filters( 'kunoichi_meta_copyright', sprintf( '&copy;%d %s',  date_i18n( 'Y' ), get_bloginfo( 'name' ) ) );
 		// Set OGP.
-		return apply_filters( '_ogp_information', $metas );
+		return apply_filters( 'kunoichi_ogp_information', $metas );
 	}
 	
 	/**
