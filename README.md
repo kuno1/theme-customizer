@@ -93,6 +93,23 @@ Your PSR-0 name space. Directory will be scan recursively.
 
 If not set, default is `get_template_directory() . '/src`, which seem to be a common location in theme development.
 
+## Predefined Classes
+
+Some customizers are predefined for convenience.
+See `src/Kunoichi\ThemeCustomizer\Pattern`.
+
+### 1. Meta and SEO
+
+`Kunoichi\ThemeCutomizer\Pattern\Seo` adds HTML meta information like meta-description, OGP, etc.
+
+This customizer is userful to provide basic SEO features.
+For more advanced features, you should recommmend some plugins.
+
+- Google Analytics or Google Tag Manager scirpt.
+- Default and Site top OGP image.
+- Top page description.
+- Option to stop all feature(in plugins' favor).
+
 ## License
 
 GPL 3.0 or later.
