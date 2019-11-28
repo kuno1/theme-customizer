@@ -104,8 +104,8 @@ class Seo extends CustomizerSetting {
 		list( $width, $height ) = $this->default_opg_size();
 		$fields = [
 			'tsmed_gtag' => [
-				'label'       => $this->get_label( 'gtab_label' ),
-				'description' => $this->get_label( 'gtab_desc' ),
+				'label'       => $this->get_label( 'gtag_label' ),
+				'description' => $this->get_label( 'gtag_desc' ),
 				'type'        => 'text',
 				'default'     => '',
 				'placeholder' => 'UA-00000000000-1',
