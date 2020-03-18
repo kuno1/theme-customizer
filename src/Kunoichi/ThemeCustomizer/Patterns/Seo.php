@@ -11,11 +11,11 @@ use Kunoichi\ThemeCustomizer\CustomizerSetting;
  * @package theme-customizer
  */
 class Seo extends CustomizerSetting {
-	
+
 	protected $section_id = 'kunoichi_customizer_seo';
-	
+
 	protected $labels = [];
-	
+
 	protected function after_init() {
 		$this->labels = $this->default_label();
 		add_action( 'wp_head', [ $this, 'display_ogp' ] );
@@ -23,7 +23,7 @@ class Seo extends CustomizerSetting {
 		add_action( 'wp_head', [ $this, 'display_tag_manager' ], 1 );
 		add_action( 'wp_body_open', [ $this, 'display_tag_manager_iframe' ], 1 );
 	}
-	
+
 	protected function section_setting() {
 		return [
 			'title'       => $this->get_label( 'sec_title' ),
@@ -31,7 +31,7 @@ class Seo extends CustomizerSetting {
 			'priority'    => 160,
 		];
 	}
-	
+
 	/**
 	 * Set labels.
 	 *
@@ -45,7 +45,7 @@ class Seo extends CustomizerSetting {
 			$this->labels[ $key ] = $value;
 		}
 	}
-	
+
 	/**
 	 *
 	 *
@@ -55,7 +55,7 @@ class Seo extends CustomizerSetting {
 	public function get_label( $key ) {
 		return isset( $this->labels[ $key ] ) ? $this->labels[ $key ] : '';
 	}
-	
+
 	/**
 	 * Default Label
 	 *
@@ -64,17 +64,17 @@ class Seo extends CustomizerSetting {
 	public function default_label() {
 		return [
 			'sec_title'        => __( 'Meta and SEO', 'theme-customizer' ),
-			'sec_description'  => __( 'In this section, you can set basic SEO feature.', 'theme-customizer' ),
+			'sec_description'  => __( 'In this section, you can set basic Optimization for Search Engine(SEO) feature.', 'theme-customizer' ),
 			'gtag_label'       => __( 'Google Analytics Tracking ID', 'theme-customizer' ),
 			'gtag_description' => __( 'If set, tracking code(gtag.js) will be generated.', 'theme-customizer' ),
 			'tm_label'         => __( 'Tag Manager Container ID', 'theme-customizer' ),
-			'tm_description'   => __( 'If set, Google Tagmanger script will be generated.', 'theme-customizer' ),
+			'tm_description'   => __( 'If set, Google Tag Manger script will be generated.', 'theme-customizer' ),
 			'sd_label'         => __( 'Top page description.', 'theme-customizer' ),
-			'sd_description'   => __( 'Used for top page description. Write in 50-80 words.', 'theme-customizer' ),
+			'sd_description'   => __( 'Used as a description of your site in search engine results. Write in 50-80 words.', 'theme-customizer' ),
 			'togp_label'       => __( 'Top page OGP', 'theme-customizer' ),
-			'togp_description' => __( 'This image will be used on site top.', 'theme-customizer' ),
+			'togp_description' => __( 'This image will be used on site top OGP image. OGP image will displayed if your site is shared on SNS.', 'theme-customizer' ),
 			'dogp_label'       => __( 'Default OGP', 'theme-customizer' ),
-			'dogp_description' => __( 'This image will be used if post has no eye catch..', 'theme-customizer' ),
+			'dogp_description' => __( 'This image will be used as OGP if post has no eye catch.', 'theme-customizer' ),
 			'tw_label'         => __( 'Twitter Account', 'theme-customizer' ),
 			'tw_description'   => __( 'Set twitter account name of your site.', 'theme-customizer' ),
 			'fb_label'         => __( 'Facebook App ID', 'theme-customizer' ),
@@ -83,7 +83,7 @@ class Seo extends CustomizerSetting {
 			'kill_description' => __( 'If checked, all seo feature of this theme will be stopped. Useful when some SEO plugins are activated.','theme-customizer' ),
 		];
 	}
-	
+
 	/**
 	 * Get default OGP size.
 	 *
@@ -92,7 +92,7 @@ class Seo extends CustomizerSetting {
 	protected function default_opg_size() {
 		return apply_filters( 'kunoichi_theme_customizer_default_ogp_size', [ 1200, 630 ] );
 	}
-	
+
 	/**
 	 * Get fields.
 	 *
@@ -162,7 +162,7 @@ class Seo extends CustomizerSetting {
 		];
 		return $fields;
 	}
-	
+
 	/**
 	 * Get OGP information.
 	 *
@@ -265,7 +265,7 @@ class Seo extends CustomizerSetting {
 		// Set OGP.
 		return apply_filters( 'kunoichi_ogp_information', $metas );
 	}
-	
+
 	/**
 	 * Display OGP information.
 	 */
@@ -302,7 +302,7 @@ class Seo extends CustomizerSetting {
 			echo "\n\t<!-- // clinics SEO setting end-->\n";
 		}
 	}
-	
+
 	/**
 	 * Display Google Analyitcs
 	 */
@@ -329,7 +329,7 @@ class Seo extends CustomizerSetting {
 		</script>
 		<?php
 	}
-	
+
 	/**
 	 * Tag manager script.
 	 */
@@ -349,7 +349,7 @@ class Seo extends CustomizerSetting {
 		<!-- End Google Tag Manager -->
 		<?php
 	}
-	
+
 	/**
 	 * Iframe for tag manager.
 	 */

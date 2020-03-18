@@ -1,0 +1,143 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Kunoichi Theme Customizer\n"
+"POT-Creation-Date: 2020-03-19 00:59+0900\n"
+"PO-Revision-Date: 2020-03-19 01:03+0900\n"
+"Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
+"Language-Team: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: theme-customizer.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: dist\n"
+
+#: src/Kunoichi/ThemeCustomizer.php:38 src/Kunoichi/ThemeCustomizer.php:62
+msgid "No items found."
+msgstr "アイテムが見つかりませんでした。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:66
+msgid "Meta and SEO"
+msgstr "メタ情報とSEO"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:67
+msgid ""
+"In this section, you can set basic Optimization for Search Engine(SEO) "
+"feature."
+msgstr ""
+"このセクションでは、基本的な検索エンジン最適化（SEO）機能を設定できます。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:68
+msgid "Google Analytics Tracking ID"
+msgstr "Google Analytics トラッキング ID"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:69
+msgid "If set, tracking code(gtag.js) will be generated."
+msgstr "設定した場合は（gtag.js）が読み込まれます。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:70
+msgid "Tag Manager Container ID"
+msgstr "タグマネージャーコンテナID"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:71
+msgid "If set, Google Tag Manger script will be generated."
+msgstr "設定した場合、Googleタグマネージャーが生成されます。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:72
+msgid "Top page description."
+msgstr "トップページの説明文。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:73
+msgid ""
+"Used as a description of your site in search engine results. Write in 50-80 "
+"words."
+msgstr ""
+"検索エンジンの検索結果であなたのサイトの説明文として表示されます。100〜200文"
+"字程度で書いてください。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:74
+msgid "Top page OGP"
+msgstr "トップページOGP"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:75
+msgid ""
+"This image will be used on site top OGP image. OGP image will displayed if "
+"your site is shared on SNS."
+msgstr ""
+"この画像はサイトのトップページのOGP画像として使用されます。OGP画像はあなたの"
+"サイトがSNSでシェアされた時に表示されます。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:76
+msgid "Default OGP"
+msgstr "デフォルトOGP"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:77
+msgid "This image will be used as OGP if post has no eye catch."
+msgstr ""
+"投稿にアイキャッチ画像が設定されていない場合、OGP画像として利用されます。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:78
+msgid "Twitter Account"
+msgstr "Twitterアカウント"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:79
+msgid "Set twitter account name of your site."
+msgstr "サイトのtwitterアカウント名を入力してください。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:80
+msgid "Facebook App ID"
+msgstr "Facebook アプリID"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:81
+msgid "Enter Facebook App ID. This will be displayed on Facebook wall."
+msgstr ""
+"FacebookのアプリIDを入力してください。これはFacebookのウォールに表示されま"
+"す。"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:82
+msgid "Stop all SEO feature"
+msgstr "すてべのSEO機能を停止"
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:83
+msgid ""
+"If checked, all seo feature of this theme will be stopped. Useful when some "
+"SEO plugins are activated."
+msgstr ""
+"チェックした場合、このテーマのSEO機能は停止します。他のSEOプラグインを有効化"
+"している場合などに役立ちます。"
+
+#: tests/src/Kunoichi/ThemeCustomizerTest/SimpleCustomizer.php:24
+msgid "Title"
+msgstr "タイトル"
+
+#. Plugin Name of the plugin/theme
+msgid "Kunoichi Theme Customizer"
+msgstr "Kunoichi テーマカスタマイザー"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/kuno1/theme-customizer"
+msgstr "https://github.com/kuno1/theme-customizer"
+
+#. Description of the plugin/theme
+msgid "Theme customizer helper"
+msgstr "テーマカスタマイザーのヘルパー"
+
+#. Author of the plugin/theme
+msgid "Kunoichi INC."
+msgstr "Kunoichi INC."
+
+#. Author URI of the plugin/theme
+msgid "https://kunoichiwp.com"
+msgstr "https://kunoichiwp.com"

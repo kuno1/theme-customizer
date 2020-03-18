@@ -11,12 +11,12 @@ use Symfony\Component\Finder\Finder;
  * @package theme-customizer
  */
 class ThemeCustomizer {
-	
+
 	/**
 	 * Do nothing.
 	 */
 	final private function __construct() {}
-	
+
 	/**
 	 * Register customizers based on PSR-0 structure.
 	 *
@@ -25,6 +25,7 @@ class ThemeCustomizer {
 	 * @return bool|\WP_Error
 	 */
 	public static function register( $name_space, $base_dir = '' ) {
+		self::load_locale( get_locale() );
 		if ( ! $base_dir ) {
 			$base_dir = get_template_directory() . '/src';
 		}
@@ -56,5 +57,17 @@ class ThemeCustomizer {
 			}
 		}
 		return $found ? true : new \WP_Error( 'no_class_found', __( 'No items found.' ) );
+	}
+
+	/**
+	 * Load locales.
+	 *
+	 * @param string $locale
+	 */
+	public static function load_locale( $locale ) {
+		$mo = dirname( dirname( __DIR__ ) ) . '/languages/theme-customizer-' . $locale . '.mo';
+		if ( file_exists( $mo ) ) {
+			load_textdomain( 'theme-customizer', $mo );
+		}
 	}
 }

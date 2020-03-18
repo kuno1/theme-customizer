@@ -1,0 +1,133 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Kunoichi Theme Customizer\n"
+"POT-Creation-Date: 2020-03-19 00:59+0900\n"
+"PO-Revision-Date: 2020-01-10 13:36+0900\n"
+"Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
+"Language-Team: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: theme-customizer.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+"X-Poedit-SearchPathExcluded-2: node_modules\n"
+"X-Poedit-SearchPathExcluded-3: dist\n"
+
+#: src/Kunoichi/ThemeCustomizer.php:38 src/Kunoichi/ThemeCustomizer.php:62
+msgid "No items found."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:66
+msgid "Meta and SEO"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:67
+msgid ""
+"In this section, you can set basic Optimization for Search Engine(SEO) "
+"feature."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:68
+msgid "Google Analytics Tracking ID"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:69
+msgid "If set, tracking code(gtag.js) will be generated."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:70
+msgid "Tag Manager Container ID"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:71
+msgid "If set, Google Tag Manger script will be generated."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:72
+msgid "Top page description."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:73
+msgid ""
+"Used as a description of your site in search engine results. Write in "
+"50-80 words."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:74
+msgid "Top page OGP"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:75
+msgid ""
+"This image will be used on site top OGP image. OGP image will displayed if "
+"your site is shared on SNS."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:76
+msgid "Default OGP"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:77
+msgid "This image will be used as OGP if post has no eye catch."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:78
+msgid "Twitter Account"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:79
+msgid "Set twitter account name of your site."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:80
+msgid "Facebook App ID"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:81
+msgid "Enter Facebook App ID. This will be displayed on Facebook wall."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:82
+msgid "Stop all SEO feature"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:83
+msgid ""
+"If checked, all seo feature of this theme will be stopped. Useful when "
+"some SEO plugins are activated."
+msgstr ""
+
+#: tests/src/Kunoichi/ThemeCustomizerTest/SimpleCustomizer.php:24
+msgid "Title"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Kunoichi Theme Customizer"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/kuno1/theme-customizer"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Theme customizer helper"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Kunoichi INC."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://kunoichiwp.com"
+msgstr ""
