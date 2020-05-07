@@ -20,7 +20,7 @@ class MultipleCheckbox extends \WP_Customize_Control {
 	 * Enqueue scripts/styles.
 	 */
 	public function enqueue() {
-		$path = dirname( dirname( dirname( __DIR__ ) ) ) . '/assets/js/multiple-checkbox.js';
+		$path = dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . '/assets/js/multiple-checkbox.js';
 		wp_enqueue_script( 'theme-customizer-multiple-checkbox', $this->path_to_url( $path ), [ 'jquery' ], filemtime( $path ), true );
 	}
 	
