@@ -37,10 +37,9 @@ class Share extends CustomizerSetting {
 			],
 			'share_styles'   => [
 				'label'         => __( 'Share Button Styles', 'theme-customiezr' ),
-				'type'          => 'text',
+				'type'          => 'select',
 				'stored'        => 'option',
 				'choices'       => $this->get_styles(),
-				'control_class' => MultipleCheckbox::class,
 			],
 		] );
 	}
