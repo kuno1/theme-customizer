@@ -39,8 +39,3 @@ foreach ( $auto_loaded as $dir ) {
 		$class_name::get_instance();
 	}
 }
-
-add_action( 'template_redirect', function() {
-	var_dump( \Kunoichi\ThemeCustomizer\Patterns\Share::render( 'after_contents' ) );
-	exit;
-} );

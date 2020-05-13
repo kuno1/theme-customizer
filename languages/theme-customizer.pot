@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Kunoichi Theme Customizer\n"
-"POT-Creation-Date: 2020-03-19 00:59+0900\n"
+"POT-Creation-Date: 2020-05-13 14:54+0900\n"
 "PO-Revision-Date: 2020-01-10 13:36+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
@@ -24,11 +24,15 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 "X-Poedit-SearchPathExcluded-3: dist\n"
 
-#: src/Kunoichi/ThemeCustomizer.php:38 src/Kunoichi/ThemeCustomizer.php:62
+#: src/Kunoichi/ThemeCustomizer.php:35 src/Kunoichi/ThemeCustomizer.php:59
 msgid "No items found."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:66
+#: src/Kunoichi/ThemeCustomizer/Models/Brand/HatenaBookmark.php:23
+msgid "Hatena Bookmark"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:66 tests/test-utility.php:22
 msgid "Meta and SEO"
 msgstr ""
 
@@ -106,6 +110,39 @@ msgstr ""
 msgid ""
 "If checked, all seo feature of this theme will be stopped. Useful when "
 "some SEO plugins are activated."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:24
+msgid "Display Share Buttons"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:31
+msgid "Services"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:36
+msgid "If none is selected, all services are activated by default."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:39
+msgid "Share Button Styles"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:50
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:56
+msgid "After Contents"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:67
+msgid "Default"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:77
+msgid "Sharing"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:79
+msgid "Sharing options for your posts."
 msgstr ""
 
 #: tests/src/Kunoichi/ThemeCustomizerTest/SimpleCustomizer.php:24
