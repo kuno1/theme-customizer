@@ -33,6 +33,7 @@ before_deploy:
   - rm -rfv .travis.yml
   - rm -rfv vendor
   - rm -rfv composer.lock
+  - rm -rfv dockeer-compose.yml
   - rm -rfv phpunit.xml.dist
   - rm -rfv theme-customizer.php
   - zip -r theme-customizer.zip ./
