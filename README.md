@@ -110,6 +110,27 @@ For more advanced features, you should recommmend some plugins.
 - Top page description.
 - Option to stop all feature(in plugins' favor).
 
+### 2. Sharing
+
+`Kunoichi\ThemeCutomizer\Pattern\Share` adds share buttons for SNS. The only codes you should implement:
+
+- Write code to display share buttons via `Kunoichi\ThemeCutomizer\Pattern\Share::render( $position )`
+
+Available services are listed in `src/Kunoithi/ThemeCustomizer/Models/Brand`
+
+## Development
+
+[wp-env](https://developer.wordpress.org/block-editor/packages/packages-env/) is supported for instant development. You need node, npm, and docker installed.
+
+```bash
+# Install libraries.
+npm install
+# Start Container
+npm start
+# wp-env commands are available via npm.
+npm run env stop
+```
+
 ## License
 
 GPL 3.0 or later.
