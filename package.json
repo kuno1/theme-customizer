@@ -13,7 +13,7 @@
     "start": "wp-env start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "env": "wp-env",
-    "cli": "wp-env run"
+    "cli": "wp-env run cli wp"
   },
   "repository": {
     "type": "git",
