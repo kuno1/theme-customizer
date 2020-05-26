@@ -12,7 +12,7 @@ use Kunoichi\ThemeCustomizer\CustomizerSetting;
  */
 class SimpleCustomizer extends CustomizerSetting {
 	
-	protected $section_id = 'site-setting';
+	protected $section_id = 'title_tagline';
 	
 	
 	/**
@@ -21,8 +21,8 @@ class SimpleCustomizer extends CustomizerSetting {
 	protected function get_fields() {
 		return [
 			'site_setting_title' => [
-				'label'       => __( 'Title' ),
-				'description' => '',
+				'label'       => 'Added Title',
+				'description' => 'This section is added by Kunoichi Theme Customizer.',
 			],
 		];
 	}

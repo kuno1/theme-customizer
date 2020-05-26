@@ -21,5 +21,4 @@ class UtilityTest extends WP_UnitTestCase {
 		switch_to_locale( 'ja' );
 		$this->assertEquals( 'メタ情報とSEO', __( 'Meta and SEO', 'theme-customizer' ) );
 	}
-
 }

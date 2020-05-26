@@ -11,6 +11,8 @@ abstract class CustomizerSetting extends Singleton {
 	
 	use Utilities;
 	
+	protected $panel_id = '';
+	
 	protected $section_id = '';
 	
 	/**
@@ -44,9 +46,17 @@ abstract class CustomizerSetting extends Singleton {
 	 * @param \WP_Customize_Manager $wp_customizer
 	 */
 	public function customize_register( $wp_customizer ) {
+		// Register panel.
+		$panel_setting = $this->panel_settings();
+		if ( $panel_setting ) {
+			$wp_customizer->add_panel( $this->panel_id, $panel_setting );
+		}
 		// Register setting if required.
 		$section_setting = $this->section_setting();
 		if ( $section_setting ) {
+			if ( $this->panel_id ) {
+				$section_setting[ 'panel' ] = $this->panel_id;
+			}
 			$wp_customizer->add_section( $this->get_section(), $section_setting );
 		}
 		// Register all fields.
@@ -74,6 +84,16 @@ abstract class CustomizerSetting extends Singleton {
 		}
 		$args['section'] = $this->get_section();
 		$wp_customizer->add_control( new $control_class( $wp_customizer, $id, $args ) );
+	}
+	
+	/**
+	 * If proper array returned, register panel.
+	 *
+	 * @see \WP_Customize_Manager::add_panel
+	 * @return array
+	 */
+	protected function panel_settings() {
+		return [];
 	}
 	
 	/**

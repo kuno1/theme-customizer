@@ -16,14 +16,16 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Invalid request.' );
 }
-
 require __DIR__ . '/vendor/autoload.php';
 
 \Kunoichi\ThemeCustomizer::load_locale( get_locale() );
 
-$auto_loaded = [ 'Patterns' ];
-foreach ( $auto_loaded as $dir ) {
-	$path = __DIR__ . '/src/Kunoichi/ThemeCustomizer/' . $dir;
+$auto_loaded = [
+	[ __DIR__ . '/src', 'Kunoichi/ThemeCustomizer/Patterns' ],
+	[ __DIR__ . '/tests/src/', 'Kunoichi/ThemeCustomizerTest' ],
+];
+foreach ( $auto_loaded as list( $base, $dir ) ) {
+	$path = $base . '/' . $dir;
 	if ( ! is_dir( $path ) ) {
 		continue;
 	}
@@ -32,7 +34,7 @@ foreach ( $auto_loaded as $dir ) {
 			continue;
 		}
 		list( $file, $class_name ) = $match;
-		$class_name = "Kunoichi\\ThemeCustomizer\\{$dir}\\{$class_name}";
+		$class_name = str_replace( '/', "\\", $dir ) . "\\" . $class_name;
 		if ( ! class_exists( $class_name ) ) {
 			continue;
 		}
