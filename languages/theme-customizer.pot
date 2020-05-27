@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Kunoichi Theme Customizer\n"
-"POT-Creation-Date: 2020-05-13 14:54+0900\n"
+"POT-Creation-Date: 2020-05-27 20:14+0900\n"
 "PO-Revision-Date: 2020-01-10 13:36+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
@@ -59,7 +59,7 @@ msgid "If set, Google Tag Manger script will be generated."
 msgstr ""
 
 #: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:72
-msgid "Top page description."
+msgid "Top page description"
 msgstr ""
 
 #: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:73
@@ -128,25 +128,21 @@ msgstr ""
 msgid "Share Button Styles"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:50
-#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:56
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:49
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:55
 msgid "After Contents"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:67
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:66
 msgid "Default"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:77
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:76
 msgid "Sharing"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:79
+#: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:78
 msgid "Sharing options for your posts."
-msgstr ""
-
-#: tests/src/Kunoichi/ThemeCustomizerTest/SimpleCustomizer.php:24
-msgid "Title"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

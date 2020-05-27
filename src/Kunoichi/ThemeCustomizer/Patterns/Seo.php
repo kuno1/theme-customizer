@@ -69,7 +69,7 @@ class Seo extends CustomizerSetting {
 			'gtag_description' => __( 'If set, tracking code(gtag.js) will be generated.', 'theme-customizer' ),
 			'tm_label'         => __( 'Tag Manager Container ID', 'theme-customizer' ),
 			'tm_description'   => __( 'If set, Google Tag Manger script will be generated.', 'theme-customizer' ),
-			'sd_label'         => __( 'Top page description.', 'theme-customizer' ),
+			'sd_label'         => __( 'Top page description', 'theme-customizer' ),
 			'sd_description'   => __( 'Used as a description of your site in search engine results. Write in 50-80 words.', 'theme-customizer' ),
 			'togp_label'       => __( 'Top page OGP', 'theme-customizer' ),
 			'togp_description' => __( 'This image will be used on site top OGP image. OGP image will displayed if your site is shared on SNS.', 'theme-customizer' ),
