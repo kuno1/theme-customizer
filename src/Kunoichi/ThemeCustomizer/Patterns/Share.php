@@ -36,7 +36,7 @@ class Share extends CustomizerSetting {
 				'description'   => __( 'If none is selected, all services are activated by default.', 'theme-customizer' ),
 			],
 			'share_styles'   => [
-				'label'         => __( 'Share Button Styles', 'theme-customiezr' ),
+				'label'         => __( 'Share Button Styles', 'theme-customizer' ),
 				'type'          => 'select',
 				'stored'        => 'option',
 				'choices'       => $this->get_styles(),
