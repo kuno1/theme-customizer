@@ -127,4 +127,25 @@ abstract class CustomizerSetting extends Singleton {
 			return $this->camelize( get_called_class() );
 		}
 	}
+	
+	/**
+	 * Get post type for multiple choices.
+	 *
+	 * @param array    $query
+	 * @param string[] $exclude
+	 * @return array
+	 */
+	protected function get_post_types( $query = [], $exclude = [] ) {
+		if ( ! $query ) {
+			$query = [ 'public' => true ];
+		}
+		$post_types = [];
+		foreach ( get_post_types( $query, OBJECT ) as $post_type ) {
+			if ( in_array( $post_type->name, $exclude ) ) {
+				continue;
+			}
+			$post_types[ $post_type->name ] = $post_type->label;
+		}
+		return $post_types;
+	}
 }
