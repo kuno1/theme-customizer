@@ -25,6 +25,7 @@ class ThemeCustomizer {
 	 * @return bool|\WP_Error
 	 */
 	public static function register( $name_space, $base_dir = '' ) {
+		static $initialized = false;
 		self::load_locale( get_locale() );
 		if ( ! $base_dir ) {
 			$base_dir = get_template_directory() . '/src';
@@ -37,14 +38,27 @@ class ThemeCustomizer {
 		$base_class_name = CustomizerSetting::class;
 		$finder = new Finder();
 		$found  = 0;
+		$class_names = [];
 		foreach ( $finder->in( $dir_name )->name( '*.php' )->files() as $file ) {
-			$path = $file->getPathname();
-			$path = str_replace( $base_dir, '', $path );
-			$path = str_replace( '.php', '', $path );
+			$path       = $file->getPathname();
+			$path       = str_replace( $base_dir, '', $path );
+			$path       = str_replace( '.php', '', $path );
 			$class_name = str_replace( '/', '\\', $path );
 			if ( ! class_exists( $class_name ) ) {
 				continue;
 			}
+			$class_names[] = $class_name;
+		}
+		/**
+		 * Add filter for registered class names.
+		 *
+		 * @param string[] $class_names
+		 * @param string   $name_space
+		 * @param string   $base_class_name
+		 * @param bool     $initialized
+		 */
+		$class_names = apply_filters( 'theme_customizer_class_name', $class_names, $name_space, $base_class_name, $initialized );
+		foreach ( $class_names as $class_name ) {
 			try {
 				$reflection = new \ReflectionClass( $class_name );
 				if ( ! $reflection->isSubclassOf( $base_class_name ) ) {
@@ -56,6 +70,7 @@ class ThemeCustomizer {
 				// Do nothing.
 			}
 		}
+		$initialized = true;
 		return $found ? true : new \WP_Error( 'no_class_found', __( 'No items found.' ) );
 	}
 
