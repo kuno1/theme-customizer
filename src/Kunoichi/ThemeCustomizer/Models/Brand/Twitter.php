@@ -13,8 +13,8 @@ class Twitter extends AbstractBrand {
 	
 	public function get_url( $post = null ) {
 		return $this->add_query_params( [
-			'url'  => rawurlencode( get_permalink( $post ) ),
-			'text' => rawurlencode( get_the_title( $post ) ),
+			'url'  => get_permalink( $post ),
+			'text' => get_the_title( $post ),
 		], 'https://twitter.com/share', $post );
 	}
 	
