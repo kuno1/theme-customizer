@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Kunoichi Theme Customizer\n"
-"POT-Creation-Date: 2020-05-27 20:14+0900\n"
+"POT-Creation-Date: 2020-09-23 22:17+0900\n"
 "PO-Revision-Date: 2020-01-10 13:36+0900\n"
 "Last-Translator: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "Language-Team: Takahashi Fumiki <takahashi.fumiki@hametuha.co.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: theme-customizer.php\n"
@@ -23,8 +23,9 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 "X-Poedit-SearchPathExcluded-2: node_modules\n"
 "X-Poedit-SearchPathExcluded-3: dist\n"
+"X-Poedit-SearchPathExcluded-4: wordpress\n"
 
-#: src/Kunoichi/ThemeCustomizer.php:35 src/Kunoichi/ThemeCustomizer.php:59
+#: src/Kunoichi/ThemeCustomizer.php:36 src/Kunoichi/ThemeCustomizer.php:74
 msgid "No items found."
 msgstr ""
 
@@ -32,84 +33,127 @@ msgstr ""
 msgid "Hatena Bookmark"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:66 tests/test-utility.php:22
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:68 tests/test-utility.php:22
 msgid "Meta and SEO"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:67
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:69
 msgid ""
 "In this section, you can set basic Optimization for Search Engine(SEO) "
 "feature."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:68
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:70
 msgid "Google Analytics Tracking ID"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:69
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:71
 msgid "If set, tracking code(gtag.js) will be generated."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:70
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:72
 msgid "Tag Manager Container ID"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:71
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:73
 msgid "If set, Google Tag Manger script will be generated."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:72
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:74
 msgid "Top page description"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:73
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:75
 msgid ""
 "Used as a description of your site in search engine results. Write in "
 "50-80 words."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:74
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:76
 msgid "Top page OGP"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:75
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:77
 msgid ""
 "This image will be used on site top OGP image. OGP image will displayed if "
 "your site is shared on SNS."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:76
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:78
 msgid "Default OGP"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:77
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:79
 msgid "This image will be used as OGP if post has no eye catch."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:78
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:80
 msgid "Twitter Account"
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:79
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:81
 msgid "Set twitter account name of your site."
 msgstr ""
 
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:80
-msgid "Facebook App ID"
-msgstr ""
-
-#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:81
-msgid "Enter Facebook App ID. This will be displayed on Facebook wall."
-msgstr ""
-
 #: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:82
-msgid "Stop all SEO feature"
+msgid "Twitter's OGP card size"
 msgstr ""
 
 #: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:83
+msgid "Default twitter card layout. Overridable on each post."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:84
+msgid "Facebook App ID"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:85
+msgid "Enter Facebook App ID. This will be displayed on Facebook wall."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:86
+msgid "Stop all SEO feature"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:87
 msgid ""
 "If checked, all seo feature of this theme will be stopped. Useful when "
 "some SEO plugins are activated."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:402
+msgid "Summary"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:403
+msgid "Summary with large image"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:434
+msgid "SEO Setting"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:438
+msgid "Meta Description"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:441
+msgid ""
+"You can override meta description with text customized for search results."
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:445
+msgid "Twitter Card Type"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:451
+msgctxt "twitter-card"
+msgid "Default"
+msgstr ""
+
+#: src/Kunoichi/ThemeCustomizer/Patterns/Seo.php:454
+msgctxt "twitter-card"
+msgid "(Default)"
 msgstr ""
 
 #: src/Kunoichi/ThemeCustomizer/Patterns/Share.php:24

@@ -443,7 +443,7 @@ class Seo extends CustomizerSetting {
 			</p>
 			<p>
 				<label for="meta-twitter-card"><?php esc_html_e( 'Twitter Card Type', 'theme-customizer' ) ?></label>
-				<select class="" name="meta_twitter_card" id="meta-twitter-card">
+				<select class="components-select-control" style="max-width: 100%; box-sizing: border-box" name="meta_twitter_card" id="meta-twitter-card">
 					<?php
 						$post_meta = get_post_meta( $post->ID, '_meta_twitter_card', true );
 						$general   = get_theme_mod( 'tsmed_meta_twitter_card', 'summary' ) ?: 'summary';
