@@ -297,9 +297,9 @@ class Seo extends CustomizerSetting {
 			}
 		}
 		if ( $lines ) {
-			echo "\n\t<!-- Clinics SEO Setting start// -->";
+			echo "\n\t<!-- Theme SEO Setting start// -->";
 			echo "\n\t" . implode( "\n\t", $lines );
-			echo "\n\t<!-- // clinics SEO setting end-->\n";
+			echo "\n\t<!-- // Theme SEO setting end-->\n";
 		}
 	}
 
