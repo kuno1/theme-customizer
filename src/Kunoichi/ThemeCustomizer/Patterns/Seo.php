@@ -63,24 +63,26 @@ class Seo extends CustomizerSetting {
 	 */
 	public function default_label() {
 		return [
-			'sec_title'        => __( 'Meta and SEO', 'theme-customizer' ),
-			'sec_description'  => __( 'In this section, you can set basic Optimization for Search Engine(SEO) feature.', 'theme-customizer' ),
-			'gtag_label'       => __( 'Google Analytics Tracking ID', 'theme-customizer' ),
-			'gtag_description' => __( 'If set, tracking code(gtag.js) will be generated.', 'theme-customizer' ),
-			'tm_label'         => __( 'Tag Manager Container ID', 'theme-customizer' ),
-			'tm_description'   => __( 'If set, Google Tag Manger script will be generated.', 'theme-customizer' ),
-			'sd_label'         => __( 'Top page description', 'theme-customizer' ),
-			'sd_description'   => __( 'Used as a description of your site in search engine results. Write in 50-80 words.', 'theme-customizer' ),
-			'togp_label'       => __( 'Top page OGP', 'theme-customizer' ),
-			'togp_description' => __( 'This image will be used on site top OGP image. OGP image will displayed if your site is shared on SNS.', 'theme-customizer' ),
-			'dogp_label'       => __( 'Default OGP', 'theme-customizer' ),
-			'dogp_description' => __( 'This image will be used as OGP if post has no eye catch.', 'theme-customizer' ),
-			'tw_label'         => __( 'Twitter Account', 'theme-customizer' ),
-			'tw_description'   => __( 'Set twitter account name of your site.', 'theme-customizer' ),
-			'fb_label'         => __( 'Facebook App ID', 'theme-customizer' ),
-			'fb_description'   => __( 'Enter Facebook App ID. This will be displayed on Facebook wall.', 'theme-customizer' ),
-			'kill_label'       => __( 'Stop all SEO feature', 'theme-customizer' ),
-			'kill_description' => __( 'If checked, all seo feature of this theme will be stopped. Useful when some SEO plugins are activated.','theme-customizer' ),
+			'sec_title'           => __( 'Meta and SEO', 'theme-customizer' ),
+			'sec_description'     => __( 'In this section, you can set basic Optimization for Search Engine(SEO) feature.', 'theme-customizer' ),
+			'gtag_label'          => __( 'Google Analytics Tracking ID', 'theme-customizer' ),
+			'gtag_description'    => __( 'If set, tracking code(gtag.js) will be generated.', 'theme-customizer' ),
+			'tm_label'            => __( 'Tag Manager Container ID', 'theme-customizer' ),
+			'tm_description'      => __( 'If set, Google Tag Manger script will be generated.', 'theme-customizer' ),
+			'sd_label'            => __( 'Top page description', 'theme-customizer' ),
+			'sd_description'      => __( 'Used as a description of your site in search engine results. Write in 50-80 words.', 'theme-customizer' ),
+			'togp_label'          => __( 'Top page OGP', 'theme-customizer' ),
+			'togp_description'    => __( 'This image will be used on site top OGP image. OGP image will displayed if your site is shared on SNS.', 'theme-customizer' ),
+			'dogp_label'          => __( 'Default OGP', 'theme-customizer' ),
+			'dogp_description'    => __( 'This image will be used as OGP if post has no eye catch.', 'theme-customizer' ),
+			'tw_label'            => __( 'Twitter Account', 'theme-customizer' ),
+			'tw_description'      => __( 'Set twitter account name of your site.', 'theme-customizer' ),
+			'tw_card_label'       => __( 'Twitter\'s OGP card size', 'theme-customizer' ),
+			'tw_card_description' => __( 'Default twitter card layout. Overridable on each post.', 'theme-customizer' ),
+			'fb_label'            => __( 'Facebook App ID', 'theme-customizer' ),
+			'fb_description'      => __( 'Enter Facebook App ID. This will be displayed on Facebook wall.', 'theme-customizer' ),
+			'kill_label'          => __( 'Stop all SEO feature', 'theme-customizer' ),
+			'kill_description'    => __( 'If checked, all seo feature of this theme will be stopped. Useful when some SEO plugins are activated.', 'theme-customizer' ),
 		];
 	}
 
@@ -108,14 +110,18 @@ class Seo extends CustomizerSetting {
 				'description' => $this->get_label( 'gtag_description' ),
 				'type'        => 'text',
 				'default'     => '',
-				'placeholder' => 'UA-00000000000-1',
+				'input_attrs' => [
+					'placeholder' => 'UA-00000000000-1',
+				],
 			],
 			'tsmed_tag_manager' => [
 				'label'       => $this->get_label( 'tm_label' ),
 				'description' => $this->get_label( 'tm_description' ),
 				'type'        => 'text',
 				'default'     => '',
-				'placeholder' => 'GTM-ABC123',
+				'input_attrs' => [
+					'placeholder' => 'GTM-ABC123',
+				],
 			],
 			'tsmed_meta_site_desc' => [
 				'label'       => $this->get_label( 'sd_label' ),
@@ -144,14 +150,25 @@ class Seo extends CustomizerSetting {
 				'description' => $this->get_label( 'tw_description' ),
 				'type'        => 'text',
 				'default'     => '',
-				'placeholder' => '@screen_name',
+				'input_attrs' => [
+					'placeholder' => '@screen_name',
+				],
+			],
+			'tsmed_meta_twitter_card' => [
+				'label'       => $this->get_label( 'tw_card_label' ),
+				'description' => $this->get_label( 'tw_card_description' ),
+				'type'        => 'select',
+				'default'     => 'summary',
+				'choices'     => $this->twitter_cards_layout(),
 			],
 			'tsmed_meta_fbapp' => [
 				'label'       => $this->get_label( 'fb_label' ),
 				'description' => $this->get_label( 'fb_description' ),
 				'type'        => 'text',
 				'default'     => '',
-				'placeholder' => 'e.g. 1234567890',
+				'input_attrs' => [
+					'placeholder' => 'e.g. 1234567890',
+				],
 			],
 			'tsmed_kill_seo' => [
 				'label'       => $this->get_label( 'kill_label' ),
@@ -240,7 +257,7 @@ class Seo extends CustomizerSetting {
 			$metas['']['keywords'] = implode( ',', $keywords );
 		}
 		// Twitter
-		$metas['twitter']['card'] = 'summary';
+		$metas['twitter']['card'] = $this->get_twitter_card_layout( is_singular() ? get_queried_object() : null );
 		if ( $twitter = get_theme_mod( 'tsmed_meta_twitter' ) ) {
 			$metas['twitter']['site'] = '@' . ltrim( $twitter, '@' );
 		}
@@ -367,5 +384,35 @@ class Seo extends CustomizerSetting {
 		</noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<?php
+	}
+	
+	/**
+	 * Twitter cards patterns
+	 *
+	 * @return array
+	 */
+	public function twitter_cards_layout() {
+		return apply_filters( 'theme_customizer_twitter_card_layouts', [
+			'summary' => __( 'Summary', 'theme-customizer' ),
+			'summary_large_image' => __( 'Summary with large image', 'theme-customizer' ),
+		] );
+	}
+	
+	/**
+	 * Get twitter card layout
+	 *
+	 * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
+	 * @param null|\WP_Post $post
+	 * @return string
+	 */
+	public function get_twitter_card_layout( $post = null ) {
+		$card = get_theme_mod( 'tsmed_meta_twitter_card', 'summary' ) ?: 'summary';
+		if ( $post ) {
+			$post_meta = get_post_meta( $post->ID, '_twitter_card_size', true );
+			if ( $post_meta ) {
+				$card = $post_meta;
+			}
+		}
+		return apply_filters( 'theme_customizer_twitter_card_size', $card );
 	}
 }
