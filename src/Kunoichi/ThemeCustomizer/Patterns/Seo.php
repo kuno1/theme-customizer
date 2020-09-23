@@ -210,7 +210,11 @@ class Seo extends CustomizerSetting {
 			}
 			$url  = home_url();
 		} elseif ( is_singular() ) {
-			$desc = apply_filters( 'kunoichi_meta_description', get_the_excerpt( get_queried_object() ) );
+			$excerpt = get_the_excerpt( get_queried_object() );
+			if ( $alt_meta = get_post_meta( get_queried_object_id(), '_meta_description_alt', true ) ) {
+				$excerpt = $alt_meta;
+			}
+			$desc = apply_filters( 'kunoichi_meta_description', $excerpt );
 			$url  = get_permalink( get_queried_object() );
 		} elseif ( is_category() || is_tag() || is_tax() ) {
 			$desc = get_queried_object()->description;
@@ -411,6 +415,7 @@ class Seo extends CustomizerSetting {
 			return;
 		}
 		foreach ( [
+			'meta_description_alt',
 			'meta_twitter_card',
 		] as $key ) {
 			update_post_meta( $post_id, '_' . $key, filter_input( INPUT_POST, $key ) );
@@ -429,6 +434,13 @@ class Seo extends CustomizerSetting {
 		add_meta_box( 'theme-customizer-seo-setting', __( 'SEO Setting', 'theme-customizer' ), function( $post ) {
 			wp_nonce_field( 'update_theme_customizer', '_themecustomizernonce', false );
 			?>
+			<p>
+				<label for="meta-description-alt"><?php esc_html_e( 'Meta Description', 'theme-customizer' ) ?></label>
+				<textarea class="widefat" id="meta-description-al" name="meta_description_alt"><?php echo esc_textarea( get_post_meta( $post->ID, '_meta_description_alt', true ) ) ?></textarea>
+				<span class="description">
+					<?php esc_html_e( 'You can override meta description with text customized for search results.', 'theme-customizer' ) ?>
+				</span>
+			</p>
 			<p>
 				<label for="meta-twitter-card"><?php esc_html_e( 'Twitter Card Type', 'theme-customizer' ) ?></label>
 				<select class="" name="meta_twitter_card" id="meta-twitter-card">
