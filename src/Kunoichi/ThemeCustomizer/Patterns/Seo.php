@@ -22,6 +22,8 @@ class Seo extends CustomizerSetting {
 		add_action( 'wp_head', [ $this, 'display_gtag' ], 1 );
 		add_action( 'wp_head', [ $this, 'display_tag_manager' ], 1 );
 		add_action( 'wp_body_open', [ $this, 'display_tag_manager_iframe' ], 1 );
+		add_action( 'save_post', [ $this, 'save_meta' ], 10, 2 );
+		add_action( 'add_meta_boxes', [ $this, 'add_meta_boxes' ], 10, 2 );
 	}
 
 	protected function section_setting() {
@@ -287,7 +289,7 @@ class Seo extends CustomizerSetting {
 	 * Display OGP information.
 	 */
 	public function display_ogp() {
-		if ( get_theme_mod( 'tsmed_kill_seo' ) ) {
+		if ( $this->is_disabled() ) {
 			// SEO setting is killed.
 			return;
 		}
@@ -399,6 +401,56 @@ class Seo extends CustomizerSetting {
 	}
 	
 	/**
+	 * Save meta box info.
+	 *
+	 * @param int $post_id
+	 * @param \WP_Post $post
+	 */
+	public function save_meta( $post_id, $post ) {
+		if ( $this->is_disabled() || ! wp_verify_nonce( filter_input( INPUT_POST, '_themecustomizernonce' ), 'update_theme_customizer' ) ) {
+			return;
+		}
+		foreach ( [
+			'meta_twitter_card',
+		] as $key ) {
+			update_post_meta( $post_id, '_' . $key, filter_input( INPUT_POST, $key ) );
+		}
+	}
+	
+	/**
+	 * Display meta box.
+	 *
+	 * @param string $post_type
+	 */
+	public function add_meta_boxes( $post_type ) {
+		if ( $this->is_disabled() ) {
+			return;
+		}
+		add_meta_box( 'theme-customizer-seo-setting', __( 'SEO Setting', 'theme-customizer' ), function( $post ) {
+			wp_nonce_field( 'update_theme_customizer', '_themecustomizernonce', false );
+			?>
+			<p>
+				<label for="meta-twitter-card"><?php esc_html_e( 'Twitter Card Type', 'theme-customizer' ) ?></label>
+				<select class="" name="meta_twitter_card" id="meta-twitter-card">
+					<?php
+						$post_meta = get_post_meta( $post->ID, '_meta_twitter_card', true );
+						$general   = get_theme_mod( 'tsmed_meta_twitter_card', 'summary' ) ?: 'summary';
+						foreach ( array_merge( [
+							'' => _x( 'Default', 'twitter-card', 'theme-customizer' ),
+						], $this->twitter_cards_layout() ) as $value => $label ) {
+							if ( $value === $general ) {
+								$label .= _x( '(Default)', 'twitter-card', 'theme-customizer' );
+							}
+							printf( '<option value="%s"%s>%s</option>', esc_attr( $value ), selected( $value, $post_meta, false ), esc_html( $label ) );
+						}
+					?>
+				</select>
+			</p>
+			<?php
+		}, $post_type, 'side', 'low' );
+	}
+	
+	/**
 	 * Get twitter card layout
 	 *
 	 * @see https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
@@ -408,11 +460,20 @@ class Seo extends CustomizerSetting {
 	public function get_twitter_card_layout( $post = null ) {
 		$card = get_theme_mod( 'tsmed_meta_twitter_card', 'summary' ) ?: 'summary';
 		if ( $post ) {
-			$post_meta = get_post_meta( $post->ID, '_twitter_card_size', true );
+			$post_meta = get_post_meta( $post->ID, '_meta_twitter_card', true );
 			if ( $post_meta ) {
 				$card = $post_meta;
 			}
 		}
 		return apply_filters( 'theme_customizer_twitter_card_size', $card );
+	}
+	
+	/**
+	 * Detect if SEO option is disabled.
+	 *
+	 * @return bool
+	 */
+	public function is_disabled() {
+		return (bool) get_theme_mod( 'tsmed_kill_seo' );
 	}
 }
