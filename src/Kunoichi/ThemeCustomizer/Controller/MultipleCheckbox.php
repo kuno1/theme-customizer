@@ -5,6 +5,11 @@ namespace Kunoichi\ThemeCustomizer\Controller;
 
 use Hametuha\StringUtility\Path;
 
+/**
+ * Multiple checkbox controler
+ *
+ * @package Kunoichi\ThemeCustomizer\Controller
+ */
 class MultipleCheckbox extends \WP_Customize_Control {
 
 	use Path;
@@ -20,8 +25,10 @@ class MultipleCheckbox extends \WP_Customize_Control {
 	 * Enqueue scripts/styles.
 	 */
 	public function enqueue() {
-		$path = dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . '/assets/js/multiple-checkbox.js';
-		wp_enqueue_script( 'theme-customizer-multiple-checkbox', $this->path_to_url( $path ), [ 'jquery' ], filemtime( $path ), true );
+		$path    = dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) . '/assets/js/multiple-checkbox.min.js';
+		$url     = apply_filters( 'theme_customizer_asset_url', $this->path_to_url( $path ) );
+		$version = '1.0.0';
+		wp_enqueue_script( 'theme-customizer-multiple-checkbox', $url, [ 'jquery' ], $version, true );
 	}
 
 	/**

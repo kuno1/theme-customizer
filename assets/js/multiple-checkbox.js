@@ -1,5 +1,7 @@
 /**
  * Multiple Checkbox.
+ *
+ * @version 1.0.0
  */
 
 /* global jQuery:false */
