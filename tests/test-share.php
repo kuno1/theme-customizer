@@ -1,13 +1,13 @@
 <?php
 
 class ShareTest extends WP_UnitTestCase {
-	
+
 	/**
 	 * @var \Kunoichi\ThemeCustomizer\Models\Brand\Facebook
 	 */
 	protected $fb = null;
-	
-	function setUp() {
+
+	function setUp():void {
 		parent::setUp();
 		$this->fb = new \Kunoichi\ThemeCustomizer\Models\Brand\Facebook();
 		// create test.
@@ -20,7 +20,7 @@ class ShareTest extends WP_UnitTestCase {
 			] );
 		}
 	}
-	
+
 	/**
 	 * Get post to share.
 	 *
@@ -40,7 +40,7 @@ class ShareTest extends WP_UnitTestCase {
 		}
 		return $posts ? $posts[0] : null;
 	}
-	
+
 	/**
 	 * Test url is valid.
 	 *
@@ -49,13 +49,13 @@ class ShareTest extends WP_UnitTestCase {
 	public function test_url() {
 		$url = $this->fb->get_url( $this->get_post() );
 		$this->assertRegExp( '#https://www\.facebook\.com/share\.php\?u=(.*)#u', $url );
-		
+
 		$tw = new \Kunoichi\ThemeCustomizer\Models\Brand\Twitter();
 		$url = $tw->get_url( $this->get_post() );
 		$this->assertRegExp( '#url=#u', $url );
 		$this->assertRegExp( '#text=#u', $url );
 	}
-	
+
 	/**
 	 * Test labels are proper.
 	 *
