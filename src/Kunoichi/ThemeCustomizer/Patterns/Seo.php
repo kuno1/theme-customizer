@@ -106,8 +106,8 @@ class Seo extends CustomizerSetting {
 	 */
 	protected function get_fields() {
 		list( $width, $height ) = $this->default_opg_size();
-		$fields = [
-			'tsmed_gtag' => [
+		$fields                 = [
+			'tsmed_gtag'              => [
 				'label'       => $this->get_label( 'gtag_label' ),
 				'description' => $this->get_label( 'gtag_description' ),
 				'type'        => 'text',
@@ -116,7 +116,7 @@ class Seo extends CustomizerSetting {
 					'placeholder' => 'UA-00000000000-1',
 				],
 			],
-			'tsmed_tag_manager' => [
+			'tsmed_tag_manager'       => [
 				'label'       => $this->get_label( 'tm_label' ),
 				'description' => $this->get_label( 'tm_description' ),
 				'type'        => 'text',
@@ -125,29 +125,29 @@ class Seo extends CustomizerSetting {
 					'placeholder' => 'GTM-ABC123',
 				],
 			],
-			'tsmed_meta_site_desc' => [
+			'tsmed_meta_site_desc'    => [
 				'label'       => $this->get_label( 'sd_label' ),
 				'description' => $this->get_label( 'sd_description' ),
 				'type'        => 'textarea',
 				'default'     => '',
 			],
-			'tsmed_meta_site_ogp' => [
-				'label'       => $this->get_label( 'togp_label' ),
-				'description' => $this->get_label( 'togp_description' ),
+			'tsmed_meta_site_ogp'     => [
+				'label'         => $this->get_label( 'togp_label' ),
+				'description'   => $this->get_label( 'togp_description' ),
 				'control_class' => 'WP_Customize_Cropped_Image_Control',
 				'default'       => '',
 				'width'         => $width,
 				'height'        => $height,
 			],
-			'tsmed_meta_default_ogp' => [
-				'label'       => $this->get_label( 'dogp_label' ),
-				'description' => $this->get_label( 'dogp_description' ),
+			'tsmed_meta_default_ogp'  => [
+				'label'         => $this->get_label( 'dogp_label' ),
+				'description'   => $this->get_label( 'dogp_description' ),
 				'control_class' => 'WP_Customize_Cropped_Image_Control',
 				'default'       => '',
 				'width'         => $width,
 				'height'        => $height,
 			],
-			'tsmed_meta_twitter' => [
+			'tsmed_meta_twitter'      => [
 				'label'       => $this->get_label( 'tw_label' ),
 				'description' => $this->get_label( 'tw_description' ),
 				'type'        => 'text',
@@ -163,7 +163,7 @@ class Seo extends CustomizerSetting {
 				'default'     => 'summary',
 				'choices'     => $this->twitter_cards_layout(),
 			],
-			'tsmed_meta_fbapp' => [
+			'tsmed_meta_fbapp'        => [
 				'label'       => $this->get_label( 'fb_label' ),
 				'description' => $this->get_label( 'fb_description' ),
 				'type'        => 'text',
@@ -172,11 +172,11 @@ class Seo extends CustomizerSetting {
 					'placeholder' => 'e.g. 1234567890',
 				],
 			],
-			'tsmed_kill_seo' => [
+			'tsmed_kill_seo'          => [
 				'label'       => $this->get_label( 'kill_label' ),
 				'description' => $this->get_label( 'kill_description' ),
-				'type' => 'checkbox',
-				'default' => '',
+				'type'        => 'checkbox',
+				'default'     => '',
 			],
 		];
 		return $fields;
@@ -195,23 +195,25 @@ class Seo extends CustomizerSetting {
 			'fb'      => [],
 		];
 		// Set Title
-		$title = wp_get_document_title();
-		$metas['og']['title'] = $title;
+		$title                    = wp_get_document_title();
+		$metas['og']['title']     = $title;
 		$metas['og']['site_name'] = get_bloginfo( 'name' );
 		// Type
 		$metas['og']['type'] = is_front_page() ? 'website' : apply_filters( 'kunoichi_meta_type', 'article' );
 		// Description and URL.
 		$desc = '';
-		$url = '';
+		$url  = '';
 		if ( is_front_page() ) {
-			$desc = get_bloginfo( 'description' );
-			if ( $site_desc = get_theme_mod( 'tsmed_meta_site_desc' ) ) {
+			$desc      = get_bloginfo( 'description' );
+			$site_desc = get_theme_mod( 'tsmed_meta_site_desc' );
+			if ( $site_desc ) {
 				$desc = $site_desc;
 			}
-			$url  = home_url();
+			$url = home_url();
 		} elseif ( is_singular() ) {
-			$excerpt = get_the_excerpt( get_queried_object() );
-			if ( $alt_meta = get_post_meta( get_queried_object_id(), '_meta_description_alt', true ) ) {
+			$excerpt  = get_the_excerpt( get_queried_object() );
+			$alt_meta = get_post_meta( get_queried_object_id(), '_meta_description_alt', true );
+			if ( $alt_meta ) {
 				$excerpt = $alt_meta;
 			}
 			$desc = apply_filters( 'kunoichi_meta_description', $excerpt );
@@ -220,14 +222,15 @@ class Seo extends CustomizerSetting {
 			$desc = get_queried_object()->description;
 			$url  = get_term_link( get_queried_object() );
 		}
-		$desc = preg_replace( "/[\r\n]/u", '', strip_tags( trim( $desc ) ) );
-		$metas['']['description'] = $desc;
+		$desc                       = preg_replace( "/[\r\n]/u", '', strip_tags( trim( $desc ) ) );
+		$metas['']['description']   = $desc;
 		$metas['og']['description'] = $desc;
 		// Set URL.
 		$metas['og']['url'] = $url;
 		// Image
-		$image = '';
-		if ( $meta_default_ogp = get_theme_mod( 'tsmed_meta_default_ogp') ) {
+		$image            = '';
+		$meta_default_ogp = get_theme_mod( 'tsmed_meta_default_ogp' );
+		if ( $meta_default_ogp ) {
 			// Default image.
 			$image = wp_get_attachment_image_url( $meta_default_ogp, $this->default_opg_size() );
 		}
@@ -235,9 +238,12 @@ class Seo extends CustomizerSetting {
 			// Post's thumbnail.
 			$image = get_the_post_thumbnail_url( get_queried_object(), $this->default_opg_size() );
 		}
-		if ( is_front_page() && ( $meta_site_ogp = get_theme_mod( 'tsmed_meta_site_ogp' ) ) ) {
+		if ( is_front_page() ) {
+			$meta_site_ogp = get_theme_mod( 'tsmed_meta_site_ogp' );
 			// Top page.
-			$image = wp_get_attachment_image_url( $meta_site_ogp, $this->default_opg_size() );
+			if ( $meta_site_ogp ) {
+				$image = wp_get_attachment_image_url( $meta_site_ogp, $this->default_opg_size() );
+			}
 		}
 		if ( $image ) {
 			$metas['og']['image'] = $image;
@@ -246,7 +252,7 @@ class Seo extends CustomizerSetting {
 		$keywords = [];
 		if ( is_singular() ) {
 			$taxonomies = [ 'post_tag', 'category' ];
-			$post_type = get_post_type_object( get_queried_object()->post_type );
+			$post_type  = get_post_type_object( get_queried_object()->post_type );
 			if ( $post_type->taxonomies ) {
 				$taxonomies = array_merge( $taxonomies, $post_type->taxonomies );
 			}
@@ -264,7 +270,8 @@ class Seo extends CustomizerSetting {
 		}
 		// Twitter
 		$metas['twitter']['card'] = $this->get_twitter_card_layout( is_singular() ? get_queried_object() : null );
-		if ( $twitter = get_theme_mod( 'tsmed_meta_twitter' ) ) {
+		$twitter                  = get_theme_mod( 'tsmed_meta_twitter' );
+		if ( $twitter ) {
 			$metas['twitter']['site'] = '@' . ltrim( $twitter, '@' );
 		}
 		if ( is_singular() ) {
@@ -274,7 +281,8 @@ class Seo extends CustomizerSetting {
 			}
 		}
 		// FB
-		if ( $app_id = get_theme_mod( 'tsmed_meta_fbapp' ) ) {
+		$app_id = get_theme_mod( 'tsmed_meta_fbapp' );
+		if ( $app_id ) {
 			$metas['fb']['app_id'] = $app_id;
 		}
 		// Copy rights and author.
@@ -283,8 +291,8 @@ class Seo extends CustomizerSetting {
 			$author = get_the_author_meta( 'display_name', get_queried_object()->post_author );
 			$author = apply_filters( 'kunoichi_meta_author_name', $author );
 		}
-		$metas['']['author'] = $author;
-		$metas['']['copyright'] = apply_filters( 'kunoichi_meta_copyright', sprintf( '&copy;%d %s',  date_i18n( 'Y' ), get_bloginfo( 'name' ) ) );
+		$metas['']['author']    = $author;
+		$metas['']['copyright'] = apply_filters( 'kunoichi_meta_copyright', sprintf( '&copy;%d %s', date_i18n( 'Y' ), get_bloginfo( 'name' ) ) );
 		// Set OGP.
 		return apply_filters( 'kunoichi_ogp_information', $metas );
 	}
@@ -300,7 +308,7 @@ class Seo extends CustomizerSetting {
 		$metas = $this->get_ogp_information();
 		$lines = [];
 		foreach ( $metas as $name => $values ) {
-			switch( $name ) {
+			switch ( $name ) {
 				case 'og':
 				case 'fb':
 					$prop_name = 'property';
@@ -335,20 +343,20 @@ class Seo extends CustomizerSetting {
 			// Do nothing.
 			return;
 		}
-		$src = add_query_arg( [
+		$src    = add_query_arg( [
 			'id' => $tracking_id,
 		], 'https://www.googletagmanager.com/gtag/js' );
 		$config = (object) apply_filters( 'kunoichi_gtag_config', [] );
 		?>
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="<?php echo esc_url( $src ) ?>"></script>
+		<script async src="<?php echo esc_url( $src ); ?>"></script>
 		<script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-		  <?php do_action( 'kunoichi_before_gtag' ); ?>
-          gtag('config', '<?php echo esc_attr( $tracking_id ) ?>', <?php echo json_encode( $config ) ?> );
-		  <?php do_action( 'kunoichi_after_gtag' ); ?>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			<?php do_action( 'kunoichi_before_gtag' ); ?>
+			gtag('config', '<?php echo esc_attr( $tracking_id ); ?>', <?php echo json_encode( $config ); ?> );
+			<?php do_action( 'kunoichi_after_gtag' ); ?>
 		</script>
 		<?php
 	}
@@ -365,10 +373,10 @@ class Seo extends CustomizerSetting {
 		?>
 		<!-- Google Tag Manager -->
 		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','<?php echo esc_js( $container_id ) ?>');</script>
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','<?php echo esc_js( $container_id ); ?>');</script>
 		<!-- End Google Tag Manager -->
 		<?php
 	}
@@ -385,13 +393,13 @@ class Seo extends CustomizerSetting {
 		?>
 		<!-- Google Tag Manager (noscript) -->
 		<noscript>
-			<iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo esc_attr( $container_id ) ?>"
+			<iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo esc_attr( $container_id ); ?>"
 					height="0" width="0" style="display:none;visibility:hidden"></iframe>
 		</noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<?php
 	}
-	
+
 	/**
 	 * Twitter cards patterns
 	 *
@@ -399,11 +407,11 @@ class Seo extends CustomizerSetting {
 	 */
 	public function twitter_cards_layout() {
 		return apply_filters( 'theme_customizer_twitter_card_layouts', [
-			'summary' => __( 'Summary', 'theme-customizer' ),
+			'summary'             => __( 'Summary', 'theme-customizer' ),
 			'summary_large_image' => __( 'Summary with large image', 'theme-customizer' ),
 		] );
 	}
-	
+
 	/**
 	 * Save meta box info.
 	 *
@@ -421,7 +429,7 @@ class Seo extends CustomizerSetting {
 			update_post_meta( $post_id, '_' . $key, filter_input( INPUT_POST, $key ) );
 		}
 	}
-	
+
 	/**
 	 * Display meta box.
 	 *
@@ -435,33 +443,33 @@ class Seo extends CustomizerSetting {
 			wp_nonce_field( 'update_theme_customizer', '_themecustomizernonce', false );
 			?>
 			<p>
-				<label for="meta-description-alt"><?php esc_html_e( 'Meta Description', 'theme-customizer' ) ?></label>
-				<textarea class="widefat" id="meta-description-al" name="meta_description_alt"><?php echo esc_textarea( get_post_meta( $post->ID, '_meta_description_alt', true ) ) ?></textarea>
+				<label for="meta-description-alt"><?php esc_html_e( 'Meta Description', 'theme-customizer' ); ?></label>
+				<textarea class="widefat" id="meta-description-al" name="meta_description_alt"><?php echo esc_textarea( get_post_meta( $post->ID, '_meta_description_alt', true ) ); ?></textarea>
 				<span class="description">
-					<?php esc_html_e( 'You can override meta description with text customized for search results.', 'theme-customizer' ) ?>
+					<?php esc_html_e( 'You can override meta description with text customized for search results.', 'theme-customizer' ); ?>
 				</span>
 			</p>
 			<p>
-				<label for="meta-twitter-card"><?php esc_html_e( 'Twitter Card Type', 'theme-customizer' ) ?></label>
+				<label for="meta-twitter-card"><?php esc_html_e( 'Twitter Card Type', 'theme-customizer' ); ?></label>
 				<select class="components-select-control" style="max-width: 100%; box-sizing: border-box" name="meta_twitter_card" id="meta-twitter-card">
 					<?php
 						$post_meta = get_post_meta( $post->ID, '_meta_twitter_card', true );
 						$general   = get_theme_mod( 'tsmed_meta_twitter_card', 'summary' ) ?: 'summary';
-						foreach ( array_merge( [
-							'' => _x( 'Default', 'twitter-card', 'theme-customizer' ),
-						], $this->twitter_cards_layout() ) as $value => $label ) {
-							if ( $value === $general ) {
-								$label .= _x( '(Default)', 'twitter-card', 'theme-customizer' );
-							}
-							printf( '<option value="%s"%s>%s</option>', esc_attr( $value ), selected( $value, $post_meta, false ), esc_html( $label ) );
+					foreach ( array_merge( [
+						'' => _x( 'Default', 'twitter-card', 'theme-customizer' ),
+					], $this->twitter_cards_layout() ) as $value => $label ) {
+						if ( $value === $general ) {
+							$label .= _x( '(Default)', 'twitter-card', 'theme-customizer' );
 						}
+						printf( '<option value="%s"%s>%s</option>', esc_attr( $value ), selected( $value, $post_meta, false ), esc_html( $label ) );
+					}
 					?>
 				</select>
 			</p>
 			<?php
 		}, $post_type, 'side', 'low' );
 	}
-	
+
 	/**
 	 * Get twitter card layout
 	 *
@@ -479,7 +487,7 @@ class Seo extends CustomizerSetting {
 		}
 		return apply_filters( 'theme_customizer_twitter_card_size', $card );
 	}
-	
+
 	/**
 	 * Detect if SEO option is disabled.
 	 *

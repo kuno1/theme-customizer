@@ -7,7 +7,7 @@ namespace Kunoichi\ThemeCustomizer;
  * @package Kunoichi\ThemeCustomizer
  */
 trait Utilities {
-	
+
 	/**
 	 * Convert class name to hungarian.
 	 *
@@ -21,5 +21,5 @@ trait Utilities {
 			}, $token ) );
 		}, preg_split( '/(_|\\\\)/u', $class_name ) ) );
 	}
-	
+
 }

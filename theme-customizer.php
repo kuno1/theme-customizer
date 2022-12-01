@@ -34,7 +34,7 @@ foreach ( $auto_loaded as list( $base, $dir ) ) {
 			continue;
 		}
 		list( $file, $class_name ) = $match;
-		$class_name = str_replace( '/', "\\", $dir ) . "\\" . $class_name;
+		$class_name                = str_replace( '/', '\\', $dir ) . '\\' . $class_name;
 		if ( ! class_exists( $class_name ) ) {
 			continue;
 		}

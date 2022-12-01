@@ -10,9 +10,9 @@ use Hametuha\StringUtility\NamingConventions;
  * @package Kunoichi\ThemeCustomizer\Models
  */
 abstract class AbstractBrand {
-	
+
 	use NamingConventions;
-	
+
 	/**
 	 * Brand priority.
 	 *
@@ -21,7 +21,7 @@ abstract class AbstractBrand {
 	final public function priority() {
 		return apply_filters( 'theme_customizer_brand_priority', $this->get_priority(), $this->slug() );
 	}
-	
+
 	/**
 	 * Priority
 	 *
@@ -30,7 +30,7 @@ abstract class AbstractBrand {
 	protected function get_priority() {
 		return 100;
 	}
-	
+
 	/**
 	 * Add query args to URL.
 	 *
@@ -46,17 +46,17 @@ abstract class AbstractBrand {
 		}
 		return apply_filters( 'theme_customizer_share_url_params', add_query_arg( $filtered, $url ), $this->slug(), $post );
 	}
-	
+
 	/**
 	 * Get base class name. e.g. Facebook.php -> Facebook
 	 *
 	 * @return string
 	 */
 	protected function get_base_class_name() {
-		$class_name = explode( "\\", get_called_class() );
-		return $class_name[count( $class_name ) - 1 ];
+		$class_name = explode( '\\', get_called_class() );
+		return $class_name[ count( $class_name ) - 1 ];
 	}
-	
+
 	/**
 	 * Returns slug.
 	 *
@@ -67,7 +67,7 @@ abstract class AbstractBrand {
 	public function slug() {
 		return $this->camel_to_kebab( $this->get_base_class_name() );
 	}
-	
+
 	/**
 	 *
 	 *
@@ -76,7 +76,7 @@ abstract class AbstractBrand {
 	public function icon_slug() {
 		return apply_filters( 'theme_customizer_brand_icon_slug', $this->slug(), $this->slug() );
 	}
-	
+
 	/**
 	 * Get icon class name.
 	 *
@@ -85,7 +85,7 @@ abstract class AbstractBrand {
 	public function icon_class() {
 		return apply_filters( 'theme_customizer_brand_icon_class', 'fab fa-' . $this->icon_slug(), $this->slug() );
 	}
-	
+
 	/**
 	 * Brand icon
 	 *
@@ -94,7 +94,7 @@ abstract class AbstractBrand {
 	protected function target() {
 		return apply_filters( 'theme_customizer_brand_target', '_blank', $this->slug() );
 	}
-	
+
 	/**
 	 * Link rel.
 	 *
@@ -103,14 +103,14 @@ abstract class AbstractBrand {
 	protected function rel() {
 		return apply_filters( 'theme_customize_brand_link_rel', 'noopener noreferrer', $this->slug() );
 	}
-	
+
 	/**
 	 * @param null|int|\WP_Post $post
 	 *
 	 * @return mixed|void
 	 */
 	protected function link_args( $post = null ) {
-		$args = [
+		$args     = [
 			'class'  => apply_filters( 'theme_customizer_brand_link_class', sprintf( 'share-buttons-link share-buttons-link-%s', $this->slug() ), $this->slug(), $post ),
 			'target' => $this->target(),
 			'href'   => $this->get_link( $post ),
@@ -125,7 +125,7 @@ abstract class AbstractBrand {
 		}
 		return apply_filters( 'theme_customizer_brand_link_attributes', $filtered, $this->slug(), $post );
 	}
-	
+
 	/**
 	 * Get markup HTML
 	 *
@@ -140,14 +140,21 @@ abstract class AbstractBrand {
 		}
 		$attr = implode( ' ', $attr );
 		?>
-		<a <?php echo $attr ?>>
-			<?php if ( $icon = $this->icon_class() ) : ?>
-			<i class="<?php echo esc_attr( $icon ) ?>"><?php echo apply_filters( 'theme_customizer_brand_icon_label', '', $this->slug(), $post ) ?></i>
-			<?php endif; ?>
-			<?php if ( $label = $this->get_label( $post ) ) : ?>
-			<span class="<?php echo esc_attr( 'theme_customizer_brand_label_class', sprintf( 'share-buttons-label share-buttons-label-%s', $this->slug() ), $this->slug(), $post ) ?>">
-				<?php echo esc_html( $label ) ?>
-			</span>
+		<a <?php echo $attr; ?>>
+			<?php
+			$icon = $this->icon_class();
+			if ( $icon ) :
+				?>
+				<i class="<?php echo esc_attr( $icon ); ?>"><?php echo apply_filters( 'theme_customizer_brand_icon_label', '', $this->slug(), $post ); ?></i>
+				<?php
+			endif;
+
+			$label = $this->get_label( $post );
+			if ( $label ) :
+				?>
+				<span class="<?php echo esc_attr( 'theme_customizer_brand_label_class', sprintf( 'share-buttons-label share-buttons-label-%s', $this->slug() ), $this->slug(), $post ); ?>">
+					<?php echo esc_html( $label ); ?>
+				</span>
 			<?php endif; ?>
 		</a>
 		<?php
@@ -155,7 +162,7 @@ abstract class AbstractBrand {
 		ob_end_clean();
 		return apply_filters( 'theme_customzier_share_button_html', $markup, $this->slug(), $post );
 	}
-	
+
 	/**
 	 * Get link URL.
 	 *
@@ -165,7 +172,7 @@ abstract class AbstractBrand {
 	protected function get_link( $post = null ) {
 		return apply_filters( 'theme_customizer_brand_link_href', $this->get_url( $post ), $this->slug(), $post );
 	}
-	
+
 	/**
 	 * Returns link to share
 	 *
@@ -174,7 +181,7 @@ abstract class AbstractBrand {
 	 * @return string
 	 */
 	abstract public function get_url( $post = null );
-	
+
 	/**
 	 * Get label for link.
 	 *
@@ -183,7 +190,7 @@ abstract class AbstractBrand {
 	public function verbose_name() {
 		return $this->get_base_class_name();
 	}
-	
+
 	/**
 	 * Get label to display.
 	 *

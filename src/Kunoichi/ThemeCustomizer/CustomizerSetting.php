@@ -8,20 +8,20 @@ use Hametuha\SingletonPattern\Singleton;
  * Class CustomizerSetting
  */
 abstract class CustomizerSetting extends Singleton {
-	
+
 	use Utilities;
-	
+
 	protected $panel_id = '';
-	
+
 	protected $section_id = '';
-	
+
 	/**
 	 * If this setting is deprecated, set this true and this class will be obsoleted.
 	 *
 	 * @var bool
 	 */
 	protected $duplicated = false;
-	
+
 	/**
 	 * Do something inside constructor.
 	 */
@@ -32,14 +32,14 @@ abstract class CustomizerSetting extends Singleton {
 		add_action( 'customize_register', [ $this, 'customize_register' ] );
 		$this->after_init();
 	}
-	
+
 	/**
 	 * Executed just after initialized.
 	 */
 	protected function after_init() {
 		// Do something here.
 	}
-	
+
 	/**
 	 * Register customizer setting.
 	 *
@@ -55,7 +55,7 @@ abstract class CustomizerSetting extends Singleton {
 		$section_setting = $this->section_setting();
 		if ( $section_setting ) {
 			if ( $this->panel_id ) {
-				$section_setting[ 'panel' ] = $this->panel_id;
+				$section_setting['panel'] = $this->panel_id;
 			}
 			$wp_customizer->add_section( $this->get_section(), $section_setting );
 		}
@@ -64,7 +64,7 @@ abstract class CustomizerSetting extends Singleton {
 			$this->register_field( $wp_customizer, $id, $args );
 		}
 	}
-	
+
 	/**
 	 * Register each fields.
 	 *
@@ -75,7 +75,7 @@ abstract class CustomizerSetting extends Singleton {
 	protected function register_field( &$wp_customizer, $id, $args ) {
 		// Add settings.
 		$wp_customizer->add_setting( $id, array_merge( $args, [
-			'type' => isset( $args[ 'stored' ] ) ? $args['stored'] : 'theme_mod',
+			'type' => isset( $args['stored'] ) ? $args['stored'] : 'theme_mod',
 		] ) );
 		// Add Control.
 		$control_class = 'WP_Customize_Control';
@@ -85,7 +85,7 @@ abstract class CustomizerSetting extends Singleton {
 		$args['section'] = $this->get_section();
 		$wp_customizer->add_control( new $control_class( $wp_customizer, $id, $args ) );
 	}
-	
+
 	/**
 	 * If proper array returned, register panel.
 	 *
@@ -95,7 +95,7 @@ abstract class CustomizerSetting extends Singleton {
 	protected function panel_settings() {
 		return [];
 	}
-	
+
 	/**
 	 * If array returned, register section.
 	 *
@@ -105,7 +105,7 @@ abstract class CustomizerSetting extends Singleton {
 	protected function section_setting() {
 		return [];
 	}
-	
+
 	/**
 	 * Should return fields to register.
 	 *
@@ -114,7 +114,7 @@ abstract class CustomizerSetting extends Singleton {
 	 * @return array A conjunction of add_setting() and add_control()
 	 */
 	abstract protected function get_fields();
-	
+
 	/**
 	 * Get section id
 	 *
@@ -127,7 +127,7 @@ abstract class CustomizerSetting extends Singleton {
 			return $this->camelize( get_called_class() );
 		}
 	}
-	
+
 	/**
 	 * Get post type for multiple choices.
 	 *
@@ -141,7 +141,7 @@ abstract class CustomizerSetting extends Singleton {
 		}
 		$post_types = [];
 		foreach ( get_post_types( $query, OBJECT ) as $post_type ) {
-			if ( in_array( $post_type->name, $exclude ) ) {
+			if ( in_array( $post_type->name, $exclude, true ) ) {
 				continue;
 			}
 			$post_types[ $post_type->name ] = $post_type->label;

@@ -31,14 +31,14 @@ class ThemeCustomizer {
 			$base_dir = get_template_directory() . '/src';
 		}
 		$base_dir = trailingslashit( $base_dir );
-		$dir_name = $base_dir . str_replace( '\\', '/', $name_space);
-		if ( ! is_dir(  $dir_name ) ) {
+		$dir_name = $base_dir . str_replace( '\\', '/', $name_space );
+		if ( ! is_dir( $dir_name ) ) {
 			return new \WP_Error( 'theme_customizer_error', __( 'No items found.' ) );
 		}
 		$base_class_name = CustomizerSetting::class;
-		$finder = new Finder();
-		$found  = 0;
-		$class_names = [];
+		$finder          = new Finder();
+		$found           = 0;
+		$class_names     = [];
 		foreach ( $finder->in( $dir_name )->name( '*.php' )->files() as $file ) {
 			$path       = $file->getPathname();
 			$path       = str_replace( $base_dir, '', $path );

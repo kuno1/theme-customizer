@@ -8,16 +8,16 @@ use Kunoichi\ThemeCustomizer\Controller\MultipleCheckbox;
 use Kunoichi\ThemeCustomizer\Models\AbstractBrand;
 
 class Share extends CustomizerSetting {
-	
+
 	/**
 	 * @var null|AbstractBrand[]
 	 */
 	private static $brands = null;
-	
+
 	protected function after_init() {
 		$this->set_section_id();
 	}
-	
+
 	protected function get_fields() {
 		return apply_filters( 'theme_customizer_share_fields', [
 			'share_buttons'  => [
@@ -36,26 +36,26 @@ class Share extends CustomizerSetting {
 				'description'   => __( 'If none is selected, all services are activated by default.', 'theme-customizer' ),
 			],
 			'share_styles'   => [
-				'label'         => __( 'Share Button Styles', 'theme-customizer' ),
-				'type'          => 'select',
-				'stored'        => 'option',
-				'choices'       => $this->get_styles(),
+				'label'   => __( 'Share Button Styles', 'theme-customizer' ),
+				'type'    => 'select',
+				'stored'  => 'option',
+				'choices' => $this->get_styles(),
 			],
 		] );
 	}
-	
+
 	protected function get_positions() {
 		return apply_filters( 'theme_customizer_share_positions', [
 			'after_contents' => __( 'After Contents', 'theme-customizer' ),
 		] );
 	}
-	
+
 	protected function get_services() {
 		return apply_filters( 'theme_customizer_share_positions', [
 			'after_contents' => __( 'After Contents', 'theme-customizer' ),
 		] );
 	}
-	
+
 	/**
 	 * Get styles
 	 *
@@ -66,11 +66,11 @@ class Share extends CustomizerSetting {
 			'' => __( 'Default', 'theme-customizer' ),
 		] );
 	}
-	
+
 	protected function set_section_id() {
 		$this->section_id = apply_filters( 'theme_customizer_sharing_options_section', '' );
 	}
-	
+
 	protected function section_setting() {
 		return $this->section_id ? [] : apply_filters( 'theme_customizer_section', [
 			'title'       => __( 'Sharing', 'theme-customizer' ),
@@ -78,7 +78,7 @@ class Share extends CustomizerSetting {
 			'description' => __( 'Sharing options for your posts.', 'theme-customizer' ),
 		] );
 	}
-	
+
 	/**
 	 * Get option for brand.
 	 */
@@ -89,7 +89,7 @@ class Share extends CustomizerSetting {
 		}
 		return $options;
 	}
-	
+
 	/**
 	 * Get registered brands.
 	 *
@@ -135,7 +135,7 @@ class Share extends CustomizerSetting {
 		}
 		return self::$brands;
 	}
-	
+
 	/**
 	 * Get available brands.
 	 *
@@ -145,15 +145,15 @@ class Share extends CustomizerSetting {
 	 */
 	public static function get_available_brands( $post = null ) {
 		$available = array_filter( explode( ',', get_option( 'share_services', '' ) ) );
-		$brands = self::get_brands();
+		$brands    = self::get_brands();
 		if ( $available ) {
 			$brands = array_filter( $brands, function( $brand ) use ( $available ) {
-				return in_array( $brand->slug(), $available );
+				return in_array( $brand->slug(), $available, true );
 			} );
 		}
 		return apply_filters( 'theme_customizer_available_brands', $brands, $post );
 	}
-	
+
 	/**
 	 * Get position to display
 	 *
@@ -164,9 +164,9 @@ class Share extends CustomizerSetting {
 	 */
 	public static function should_display( $position, $post = null ) {
 		$positions = explode( ',', get_option( 'share_buttons', '' ) );
-		return in_array( $position, $positions );
+		return in_array( $position, $positions, true );
 	}
-	
+
 	/**
 	 * Render share links.
 	 *

@@ -2,7 +2,6 @@
 
 A handy PHP class to integrate WordPress Theme Customizer.
 
-[![Travis CI Master](https://travis-ci.org/kuno1/theme-customizer.svg?branch=master)](https://travis-ci.org/kuno1/theme-customizer)
 
 ## Installation
 
