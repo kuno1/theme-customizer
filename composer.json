@@ -35,7 +35,7 @@
     "require": {
         "php": ">=5.6",
         "hametuha/singleton-pattern": "^1.2",
-        "symfony/finder": "^3.4",
+        "symfony/finder": "^5.4.0",
         "hametuha/string-utility": "^1.2"
     },
     "require-dev": {
